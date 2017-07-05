@@ -8,6 +8,58 @@
       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
+    <bean id="database" class="exercise.Database">
+        <property name="name" value="db1"></property>
+        <property name="port" value="port1"></property>
+    </bean>
+
+
+    <bean id="tea" class="exercise.Tea" name="hotDrink"/>
+
+    <bean id="expressTea" class="exercise.ExpressTea"/>
+
+    <bean id="restaurant" class="exercise.Restaurant" autowire="byName"/>
+    <!--<bean id="restauranttype" class="exercise.Restaurant" autowire="byType"/>-->
+    <bean id="restaurantConstruct" class="exercise.Restaurant" autowire="constructor"/>
+
+    <bean id="teaRestaurant" class="exercise.Restaurant" scope="prototype">
+       <property name="hotDrink" ref="tea"></property>
+    </bean>
+
+    <bean id="expressTeaRestaurant" class="exercise.Restaurant">
+        <property name="hotDrink">
+            <bean class="exercise.ExpressTea"/>
+        </property>
+
+    </bean>
+
+    <bean id="complexBean" class="exercise.Complex">
+        <property name="list">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+
+        <property name="set">
+            <set>
+                <value>One</value>
+                <value>Two</value>
+            </set>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="1" value="One"/>
+                <entry key="2" value="Two"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <context:annotation-config />
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 
 </beans>
 
