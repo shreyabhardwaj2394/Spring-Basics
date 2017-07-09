@@ -13,13 +13,8 @@ public class Test {
 
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("beans.xml");
 
-
-        //For Autowiring and Required annotations
-        System.out.println("All the operations over exercise.Restaurant Class::");
-        Restaurant restaurant=applicationContext.getBean("restaurant",Restaurant.class);
-        restaurant.display();
-
-
+        Restaurant restaurant=(Restaurant)applicationContext.getBean("restaurant");
+        System.out.println(restaurant);
 
     }
 }
