@@ -13,21 +13,12 @@ interface HotDrink{
 
 public class Restaurant {
 
+    //@Autowired    for autowiring using field
     HotDrink hotDrink;
-    String message;     //To test the scope of the bean
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public Restaurant() {
 
     }
-
+    //@Autowired        for autowiring using constructor
     public Restaurant(HotDrink hotDrink) {
         this.hotDrink = hotDrink;
     }
@@ -35,7 +26,8 @@ public class Restaurant {
     public HotDrink getHotDrink() {
         return hotDrink;
     }
-
+    @Autowired    //    for  autowiring using setter
+    @Required
     public void setHotDrink(HotDrink hotDrink) {
         this.hotDrink = hotDrink;
     }
@@ -48,23 +40,23 @@ public class Restaurant {
 class Tea implements HotDrink{
     @Override
     public String toString() {
-        return "Tea{}";
+        return "exercise.Tea{}";
     }
 
     @Override
     public void prepareHotDrink() {
-        System.out.println("Tea object");
+        System.out.println("exercise.Tea object");
     }
 }
 
 class  ExpressTea implements HotDrink{
     @Override
     public String toString() {
-        return "ExpressTea{}";
+        return "exercise.ExpressTea{}";
     }
 
     @Override
     public void prepareHotDrink() {
-        System.out.println("ExpressTea object");
+        System.out.println("exercise.ExpressTea object");
     }
 }
